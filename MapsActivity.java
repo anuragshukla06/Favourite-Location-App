@@ -73,9 +73,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        Intent mainIntent = getIntent();
-        openLatlong = mainIntent.getStringExtra("openLatlong");
-
     }
 
 
@@ -93,7 +90,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         boolean flag = false;
-
+        
+        Intent mainIntent = getIntent();
+        openLatlong = mainIntent.getStringExtra("openLatlong");
+        
         if(openLatlong != null) {
             String[] placeLatlongs = openLatlong.split(" ");
             double lat = Double.parseDouble(placeLatlongs[0]);
